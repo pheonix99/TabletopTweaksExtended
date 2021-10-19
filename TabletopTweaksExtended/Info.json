@@ -4,10 +4,10 @@
   "DisplayName": "Tabletop Tweaks Extended",
   "EntryMethod": "TabletopTweaksExtended.Main.Load",
   "GameVersion": "1.0.9",
-  
+  "HomePage": "https://github.com/pheonix99/TabletopTweaksExtended/releases",
   "Id": "TabletopTweaksExtended",
   "ManagerVersion": "0.23.0",
-  
-  "Requirements": ["TabletopTweaks"],
+
+  "Requirements": [ "TabletopTweaks" ],
   "Version": "1.0.0"
 }

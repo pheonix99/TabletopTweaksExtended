@@ -98,6 +98,7 @@
     <Compile Include="NewComponents\PseudoProgressionRankClassModifier.cs" />
     <Compile Include="NewComponents\PseudoProgressionRankModifier.cs" />
     <Compile Include="NewComponents\ScalingArmoredJuggernautDRProperty.cs" />
+    <Compile Include="NewComponents\TWFNoPenaltyFromNotLight.cs" />
     <Compile Include="NewContent\ContentAdder.cs" />
     <Compile Include="NewContent\Feats\ProdigiousTWF.cs" />
     <Compile Include="NewContent\Features\PurifierEarlyCures.cs" />
@@ -117,6 +118,8 @@
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="README.md" />
+    <None Include="repository.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

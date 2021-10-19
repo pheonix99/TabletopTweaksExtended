@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TabletopTweaksExtended.Config;
 using TabletopTweaksExtended.Extensions;
+using TabletopTweaksExtended.NewComponents;
 using TabletopTweaksExtended.Utilities;
 
 namespace TabletopTweaksExtended.NewContent.Feats
@@ -35,6 +36,7 @@ namespace TabletopTweaksExtended.NewContent.Feats
                 bp.AddComponent(Helpers.Create<FeatureTagsComponent>(c => {
                     c.FeatureTags = FeatureTag.Attack | FeatureTag.Melee;
                 }));
+                bp.AddComponent(Helpers.Create<TWFNoPenaltyFromNotLight>());
                 if (bp.IsPrerequisiteFor == null)
                     bp.IsPrerequisiteFor = new List<BlueprintFeatureReference>();
 
