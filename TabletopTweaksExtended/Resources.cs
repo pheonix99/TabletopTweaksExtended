@@ -55,18 +55,18 @@ namespace TabletopTweaksExtended
             }
             else
             {
-                Main.Log($"{name} not found locally");
+                //Main.Log($"{name} not found locally");
                 T blueprint = GetBlueprint<T>(assetId);
                 if (blueprint != null)
                 {
                     
-                    Main.Log($"{name} located in Tabletop Tweaks");
+                    //Main.Log($"{name} located in Tabletop Tweaks");
                     ModSettings.Blueprints.SetTTBPUsed(name, assetId);
                     return blueprint;
                 }
                 else
                 {
-                    Main.Log($"{name} not built");
+                    //Main.Log($"{name} not built");
                     return null;
                 }
                 
