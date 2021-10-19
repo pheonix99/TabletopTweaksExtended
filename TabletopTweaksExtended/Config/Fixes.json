@@ -1,0 +1,36 @@
+{
+  "NewSettingsOffByDefault": false,
+  "Oracle": {
+    "DisableAll": false,
+
+    "Archetypes": {
+      "Purifier": {
+        "DisableAll": false,
+        "Enabled": {
+          "Level3Revelation": true,
+          "RestoreEarlyCure": true
+        }
+      }
+    }
+  },
+  "Fighter": {
+    "DisableAll": false,
+    "Base": {
+      "DisableAll": false,
+      "Enabled": {
+        "AdvancedWeaponTraining": true,
+        "AdvancedArmorTraining": true,
+        "TwoHandedWeaponTraining": true,
+        "WeaponTrainingStacking": true
+      }
+    },
+    "Archetypes": {
+      "TwoHandedFighter": {
+        "DisableAll": false,
+        "Enabled": {
+          "AdvancedWeaponTraining": true
+        }
+      }
+    }
+  }
+}

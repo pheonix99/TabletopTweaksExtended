@@ -1,0 +1,9 @@
+{
+  "NewSettingsOffByDefault": false,
+  "Feats": {
+    "DisableAll": false,
+    "Enabled": {
+      "ProdigiousTWF": true
+    }
+  }
+}

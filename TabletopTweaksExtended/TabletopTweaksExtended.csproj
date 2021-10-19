@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,6 +11,7 @@
     <RootNamespace>TabletopTweaksExtended</RootNamespace>
     <AssemblyName>TabletopTweaksExtended</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>9</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -21,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +33,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <Target Name="Publicise" AfterTargets="CreateLib">
+    <ItemGroup>
+      <PubliciseAssemblyCSharp Include="..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Assembly-CSharp.dll" />
+      <PubliciseUniRx Include="..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UniRx.dll" />
+    </ItemGroup>
+    <Publicise InputAssemblies="@(PubliciseAssemblyCSharp)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+    <Publicise InputAssemblies="@(PubliciseUniRx)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+  </Target>
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
@@ -40,6 +51,12 @@
     <Reference Include="Assembly-CSharp_public">
       <HintPath>..\..\..\..\..\..\Mods\WrathMods-TabletopTweaks\lib\Assembly-CSharp_public.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owlcat.Runtime.Core">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +65,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UniRx_public">
+      <HintPath>..\..\..\..\..\..\Mods\WrathMods-TabletopTweaks\lib\UniRx_public.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -59,12 +79,47 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bugfixes\Classes\Oracle.cs" />
+    <Compile Include="Bugfixes\CrossclassScaling\AdvancedArmorTraining.cs" />
+    <Compile Include="Config\AddedContent.cs" />
+    <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Config\Fixes.cs" />
+    <Compile Include="Config\IDisableableGroup.cs" />
+    <Compile Include="Config\IUpdatableSettings.cs" />
+    <Compile Include="Config\ModSettings.cs" />
+    <Compile Include="Config\NestedSettingsGroup.cs" />
+    <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="ExtensionMethods\Extensions.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="MechanicsChanges\PseudoProgressionRankGetter.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteAbstractLogical.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteLogicalAND.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisitePsuedoProgressionRank.cs" />
+    <Compile Include="NewComponents\PseudoProgressionRankClassModifier.cs" />
+    <Compile Include="NewComponents\PseudoProgressionRankModifier.cs" />
+    <Compile Include="NewComponents\ScalingArmoredJuggernautDRProperty.cs" />
+    <Compile Include="NewContent\ContentAdder.cs" />
     <Compile Include="NewContent\Feats\ProdigiousTWF.cs" />
+    <Compile Include="NewContent\Features\PurifierEarlyCures.cs" />
+    <Compile Include="NewContent\FighterArmorTraining\PatchAdvancedArmorTraining.cs" />
+    <Compile Include="NewContent\FighterArmorTraining\ProliferateFramework.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="Utilities\DescriptionTools.cs" />
+    <Compile Include="Utilities\FeatTools.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Utilities\PostPatchInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Bugfixes\" />
+    <EmbeddedResource Include="Config\AddedContent.json" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
+    <EmbeddedResource Include="Config\Fixes.json" />
+    <None Include="Info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%25WrathPath%25\Mods\TabletopTweaksExtended\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+  </PropertyGroup>
 </Project>

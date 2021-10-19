@@ -1,0 +1,13 @@
+{
+  "AssemblyName": "TabletopTweaksExtended.dll",
+  "Author": "Pheonix99 forking Sean Petrie",
+  "DisplayName": "Tabletop Tweaks Extended",
+  "EntryMethod": "TabletopTweaksExtended.Main.Load",
+  "GameVersion": "1.0.9",
+  
+  "Id": "TabletopTweaksExtended",
+  "ManagerVersion": "0.23.0",
+  
+  "Requirements": ["TabletopTweaks"],
+  "Version": "1.0.0"
+}
